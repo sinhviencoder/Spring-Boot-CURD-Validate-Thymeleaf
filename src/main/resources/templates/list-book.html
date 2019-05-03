@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <script src="/jquery/jquery-3.3.1.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+  		<h2>Validate From</h2>
+  		<p>Hướng dẫn validate form dùng Spring Boot + Spring Data JPA + Mysql  + JSP/JSTL</p>
+  		<ul class="nav nav-tabs">
+    		<li>
+      			<a href="/author/add">Add Author</a>
+    		</li>
+    		<li>
+      			<a href="/author/list-author">View List Author</a>
+    		</li>
+    		<li>
+      			<a href="/book/add">Add Book</a>
+    		</li>
+    		<li class="active">
+      			<a href="/book/list-book">View List Book</a>
+    		</li>
+  		</ul>
+		<div style="margin-top: 50px;">
+			<table class="table table-bordered">
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">Name</th>
+			      <th scope="col">Price</th>
+			      <th scope="col">Quantity</th>
+			      <th scope="col">Author Name</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <tr th:each ="book : ${books}">
+	               <td th:utext="${book.bookId}">...</td>
+	               <td th:utext="${book.name}">...</td>
+	               <td th:utext="${book.price}">...</td>
+	               <td th:utext="${book.quantity}">...</td>
+	               <td th:utext="${book.author.name}">...</td>
+			  </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <script src="/jquery/jquery-3.3.1.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+  		<h2>Validate From</h2>
+  		<p>Hướng dẫn validate form dùng Spring Boot + Spring Data JPA + Mysql  + JSP/JSTL</p>
+  		<ul class="nav nav-tabs">
+    		<li>
+      			<a href="/author/add">Add Author</a>
+    		</li>
+    		<li>
+      			<a href="/author/list-author">View List Author</a>
+    		</li>
+    		<li class="active">
+      			<a href="/book/add">Add Book</a>
+    		</li>
+    		<li>
+      			<a href="/book/list-book">View List Book</a>
+    		</li>
+  		</ul>
+		<div style="margin-top: 50px;">
+		
+			<form action="#" th:action="@{/book/add}" th:object="${book}" method="post" class="form-horizontal" id="book-form">
+  			
+  				<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error : ''">
+               		<label class="col-sm-2 control-label ">Name*</label>
+                	<div class="col-sm-6">
+                    	<input th:field="*{name}" type="text" class="form-control" placeholder="Name Book">
+                  		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="help-block">Name Error</span>
+	               	</div>
+                </div>
+                
+  				<div class="form-group" th:classappend="${#fields.hasErrors('price')} ? has-error : ''">
+               		<label class="col-sm-2 control-label ">Price</label>
+                	<div class="col-sm-6">
+                    	<input th:field="*{price}" type="text" class="form-control" placeholder="Price Book">
+                  		<span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="help-block">Price Error</span>
+	               	</div>
+                </div>
+                
+  				<div class="form-group" th:classappend="${#fields.hasErrors('quantity')} ? has-error : ''">
+               		<label class="col-sm-2 control-label ">Quantity</label>
+                	<div class="col-sm-6">
+                    	<input th:field="*{quantity}" type="text" class="form-control" placeholder="Quantity Book">
+                  		<span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="help-block">Quantity Error</span>
+	               	</div>
+                </div>
+                
+  				<div class="form-group" th:classappend="${#fields.hasErrors('author')} ? has-error : ''">
+               		<label class="col-sm-2 control-label ">Author*</label>
+                	<div class="col-sm-6">
+               			<select th:field="*{author}" class="form-control">
+		                         <option value=""> --Select Author-- </option>
+		                         <option th:each="author : ${authors}"
+		                            th:value="${author.authorId}"
+		                            th:utext="${author.Name}"/>
+	                    </select>
+                		
+                  		<span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="help-block">Author Error</span>
+	               	</div>
+                </div>
+                
+  				<div class="form-group">
+               		<label class="col-sm-2 control-label "></label>
+                	<div class="col-sm-10">
+                    	<button type="submit" class="btn btn-primary">Submit</button>
+	               	</div>
+                </div>
+                
+  			</form>
+	  	</div>
+  	</div>
+</body>
+</html>

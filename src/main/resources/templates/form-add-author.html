@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+    
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <script src="/jquery/jquery-3.3.1.min.js"></script>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+  		<h2>Validate From Spring Boot</h2>
+  		<p>Thêm đối tượng xuống Database có Validate Form dùng Spring Boot + Spring Form Tag + Spring Data JPA + Mysql + JSP/JSTL</p>
+  		<ul class="nav nav-tabs">
+    		<li class="active">
+      			<a href="/author/add">Add Author</a>
+    		</li>
+    		<li>
+      			<a href="/author/list-author">View List Author</a>
+    		</li>
+    		<li>
+      			<a href="/book/add">Add Book</a>
+    		</li>
+    		<li>
+      			<a href="/book/list-book">View List Book</a>
+    		</li>
+  		</ul>
+  
+  		<div style="margin-top: 50px;">
+  		
+  			<form action="#" th:action="@{/author/add}" th:object="${author}" method="post" class="form-horizontal" id="author-form">
+  			
+  				<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error : ''">
+               		<label class="col-sm-2 control-label ">Name*</label>
+                	<div class="col-sm-6">
+                    	<input th:field="*{name}" type="text" class="form-control" placeholder="Name Author">
+                  		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="help-block">Name Error</span>
+	               	</div>
+                </div>
+                
+  				<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error : ''">
+               		<label class="col-sm-2 control-label ">Email*</label>
+                	<div class="col-sm-6">
+                    	<input th:field="*{email}" type="text" class="form-control" placeholder="Email Author">
+                  		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="help-block">Email Error</span>
+	               	</div>
+                </div>
+                
+  				<div class="form-group">
+               		<label class="col-sm-2 control-label "></label>
+                	<div class="col-sm-10">
+                    	<button type="submit" class="btn btn-primary">Submit</button>
+	               	</div>
+                </div>
+                
+  			</form>
+  			
+		</div>
+  	
+	</div>
+	
+</body>
+</html>
+
