@@ -35,7 +35,7 @@
   			<form action="#" th:action="@{/author/add}" th:object="${author}" method="post" class="form-horizontal" id="author-form">
   			
   				<div class="form-group" th:classappend="${#fields.hasErrors('name')} ? has-error : ''">
-               		<label class="col-sm-2 control-label ">Name*</label>
+               		<label class="col-sm-2 control-label" for="name">Name*</label>
                 	<div class="col-sm-6">
                     	<input th:field="*{name}" type="text" class="form-control" placeholder="Name Author">
                   		<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="help-block">Name Error</span>
@@ -43,7 +43,7 @@
                 </div>
                 
   				<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error : ''">
-               		<label class="col-sm-2 control-label ">Email*</label>
+               		<label class="col-sm-2 control-label" for="email">Email*</label>
                 	<div class="col-sm-6">
                     	<input th:field="*{email}" type="text" class="form-control" placeholder="Email Author">
                   		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="help-block">Email Error</span>

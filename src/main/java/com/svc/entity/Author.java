@@ -1,9 +1,12 @@
 package com.svc.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -17,23 +20,32 @@ public class Author {
 	@NotEmpty(message = "Không được để trống email")
 	@Email(message = "Định dạng email không đúng")
 	private String email;
+
+	@OneToMany(mappedBy = "author")
+	List<Book> books;
+
 	public int getAuthorId() {
 		return authorId;
 	}
+
 	public void setAuthorId(int authorId) {
 		this.authorId = authorId;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 }

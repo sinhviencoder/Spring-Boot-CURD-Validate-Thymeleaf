@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -20,13 +21,12 @@ public class Book {
 	private double price;
 	@Min(value = 0, message = "Số lượng không được nhỏ 0")
 	private int quantity;
-	
+
 	@NotNull(message = "Không được để trống")
 	@ManyToOne
+	@JoinColumn(name = "authorId")
 	private Author author;
 
-	
-	
 	public Book() {
 		super();
 	}
